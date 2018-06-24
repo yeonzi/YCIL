@@ -401,7 +401,10 @@ int bmp_read_dib(bmp_file_t *bmp)
     fseek(bmp->fp, 14, SEEK_SET);
 
     /* get bmp information header */
-    fread(&bmp->info, sizeof(bmp->info), 1, bmp->fp);
+    if( fread(&bmp->info, sizeof(bmp->info), 1, bmp->fp) != 1 ) {
+        fprintf(stderr, "Cannot Read DIB info.\n");
+        return -1;
+    }
 
     /* unsupported bmp format */
     if(bmp->info.biSize < DIB_BITMAPINFOHEADER_SIZE){

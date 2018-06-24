@@ -39,7 +39,11 @@ image_t * image_open(const char * path)
         perror("Cannot open file");
         return NULL;
     }
-    fread(&magic, sizeof(int16_t), 1, fp);
+
+    if ( fread(&magic, sizeof(int16_t), 1, fp) != 1 ) {
+        fprintf(stderr, "Cannot read file.\n");
+        return NULL;
+    }
 
     fprintf(stderr, "Magic Header: %04X\n", magic);
 
