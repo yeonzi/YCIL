@@ -80,6 +80,7 @@ image_t * image_new(int32_t width, int32_t height, int32_t model)
         case IMG_MODEL_CYMK:
         case IMG_MODEL_BGRA:
             img->nChannels = 4;
+            break;
         default:
             img->nChannels = 3;
     }
