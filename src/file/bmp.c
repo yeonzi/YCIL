@@ -465,8 +465,8 @@ image_t * bmp_read(FILE * fp)
 {
     bmp_file_t      bmp;
 
-    if ( bmp.fp == NULL ) {
-        perror("NULL pointer passed to image_bmp_read().");
+    if ( fp == NULL ) {
+        perror("NULL pointer passed to bmp_read().");
         return NULL;
     }
 
